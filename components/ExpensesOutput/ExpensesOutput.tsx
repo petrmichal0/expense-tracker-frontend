@@ -3,10 +3,20 @@ import { View } from "react-native";
 import ExpensesSummary from "./ExpensesSummary";
 import ExpensesList from "./ExpensesList";
 
-function ExpensesOutput({ expenses }) {
+type Expense = {
+  id: string;
+  amount: number;
+  description: string;
+};
+
+type ExpensesOutputProps = {
+  expenses: Expense[] | null;
+};
+
+function ExpensesOutput({ expenses, periodName }: ExpensesOutputProps) {
   return (
     <View>
-      <ExpensesSummary />
+      <ExpensesSummary expenses={expenses} periodName={periodName} />
       <ExpensesList />
     </View>
   );
