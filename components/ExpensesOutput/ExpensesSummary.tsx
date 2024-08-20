@@ -1,8 +1,15 @@
 import { Text, View } from "react-native";
 
+type Expense = {
+  amount: number;
+  description: string;
+  date: Date;
+  id: string;
+};
+
 type ExpensesSummaryProps = {
   periodName: string;
-  expenses: { amount: number }[];
+  expenses: Expense[];
 };
 
 function ExpensesSummary({ periodName, expenses }: ExpensesSummaryProps) {
