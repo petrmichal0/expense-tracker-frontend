@@ -12,7 +12,7 @@ type ExpensesListProps = {
 };
 
 function ExpensesList({ expenses }: ExpensesListProps) {
-  function renderExpenseItem(itemData) {
+  function renderExpenseItem(itemData: { item: Expense }) {
     return (
       <>
         {/* <Text>{itemData.item.amount}</Text> */}
