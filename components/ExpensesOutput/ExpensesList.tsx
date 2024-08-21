@@ -1,9 +1,10 @@
 import { FlatList, Text } from "react-native";
+import ExpenseItem from "./ExpenseItem";
 
 type Expense = {
   amount: number;
   description: string;
-  date: Date;
+  date: string;
   id: string;
 };
 
@@ -13,13 +14,15 @@ type ExpensesListProps = {
 
 function ExpensesList({ expenses }: ExpensesListProps) {
   function renderExpenseItem(itemData: { item: Expense }) {
+    const { description, amount, date } = itemData.item;
+    const formattedDate = new Date(date).toLocaleDateString(); // To convert a date object to a string
+
     return (
-      <>
-        {/* <Text>{itemData.item.amount}</Text> */}
-        <Text>{itemData.item.description}</Text>
-        {/* <Text>{itemData.item.date}</Text> */}
-        {/* <Text>{itemData.item.id}</Text> */}
-      </>
+      <ExpenseItem
+        description={description}
+        amount={amount}
+        date={formattedDate}
+      />
     );
   }
 
