@@ -9,8 +9,15 @@ type ExpenseItemProps = {
 };
 
 function ExpenseItem({ description, amount, date }: ExpenseItemProps) {
+  function expensePressHandler() {
+    console.log("Pressed!");
+  }
+
   return (
-    <Pressable>
+    <Pressable
+      onPress={expensePressHandler}
+      style={({ pressed }) => pressed && styles.pressed}
+    >
       <View style={styles.expenseItem}>
         <View>
           <Text style={[styles.textBase, styles.description]}>
