@@ -4,7 +4,7 @@ import ExpenseItem from "./ExpenseItem";
 type Expense = {
   amount: number;
   description: string;
-  date: string;
+  date: Date;
   id: string;
 };
 

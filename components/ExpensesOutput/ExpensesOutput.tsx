@@ -48,6 +48,36 @@ const DUMMY_EXPENSES = [
     amount: 35.99,
     date: new Date("2024-04-18"),
   },
+  {
+    id: "e6",
+    description: "Book",
+    amount: 35.99,
+    date: new Date("2024-04-18"),
+  },
+  {
+    id: "e7",
+    description: "Book",
+    amount: 35.99,
+    date: new Date("2024-04-18"),
+  },
+  {
+    id: "e8",
+    description: "Book",
+    amount: 35.99,
+    date: new Date("2024-04-18"),
+  },
+  {
+    id: "e9",
+    description: "Book",
+    amount: 35.99,
+    date: new Date("2024-04-18"),
+  },
+  {
+    id: "e10",
+    description: "Book",
+    amount: 35.99,
+    date: new Date("2024-04-18"),
+  },
 ];
 
 function ExpensesOutput({ expenses, periodName }: ExpensesOutputProps) {
