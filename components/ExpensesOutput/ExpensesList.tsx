@@ -14,10 +14,15 @@ type ExpensesListProps = {
 
 function ExpensesList({ expenses }: ExpensesListProps) {
   function renderExpenseItem(itemData: { item: Expense }) {
-    const { description, amount, date } = itemData.item;
+    const { description, amount, date, id } = itemData.item;
 
     return (
-      <ExpenseItem description={description} amount={amount} date={date} />
+      <ExpenseItem
+        description={description}
+        amount={amount}
+        date={date}
+        id={id}
+      />
     );
   }
 

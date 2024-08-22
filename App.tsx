@@ -11,7 +11,12 @@ import RecentExpenses from "./screens/RecentExpenses";
 import AllExpenses from "./screens/AllExpenses";
 import IconButton from "./components/UI/IconButton";
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  ExpensesOverview: undefined;
+  ManageExpense: { expenseId: string };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTabs = createBottomTabNavigator();
 
 function ExpensesOverview() {
