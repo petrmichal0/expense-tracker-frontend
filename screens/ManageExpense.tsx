@@ -5,6 +5,7 @@ import { StyleSheet, View } from "react-native";
 import { GlobalStyles } from "../constants/styles";
 
 import IconButton from "../components/UI/IconButton";
+import Button from "../components/UI/Button";
 
 type RootStackParamList = {
   ExpensesOverview: undefined;
@@ -32,8 +33,23 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
 
   function deleteExpenseHandler() {}
 
+  function cancelHandler() {
+    navigation.goBack();
+  }
+
+  function confirmHandler() {}
+
   return (
     <View style={styles.container}>
+      <View style={styles.buttons}>
+        <Button onPress={cancelHandler} mode="flat">
+          Cancel
+        </Button>
+
+        <Button style={styles.button} onPress={confirmHandler}>
+          {isEditing ? "Update" : "Add"}
+        </Button>
+      </View>
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton
@@ -55,6 +71,15 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary800,
+  },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 16,
+  },
+  button: {
+    minWidth: 100,
   },
   deleteContainer: {
     marginTop: 16,
