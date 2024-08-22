@@ -4,6 +4,7 @@ import { GlobalStyles } from "../../constants/styles";
 
 import ExpensesSummary from "./ExpensesSummary";
 import ExpensesList from "./ExpensesList";
+import { DUMMY_EXPENSES } from "../../store/expenses-context";
 
 type Expense = {
   amount: number;
@@ -16,69 +17,6 @@ type ExpensesOutputProps = {
   expenses: Expense[];
   periodName: string;
 };
-
-const DUMMY_EXPENSES = [
-  {
-    id: "e1",
-    description: "Socks",
-    amount: 99.99,
-    date: new Date("2024-07-15"),
-  },
-  {
-    id: "e2",
-    description: "Shoes",
-    amount: 125.99,
-    date: new Date("2024-07-16"),
-  },
-  {
-    id: "e3",
-    description: "Oranges",
-    amount: 35.99,
-    date: new Date("2024-05-15"),
-  },
-  {
-    id: "e4",
-    description: "Book",
-    amount: 65.99,
-    date: new Date("2024-04-15"),
-  },
-  {
-    id: "e5",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e6",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e7",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e8",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e9",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e10",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-];
 
 function ExpensesOutput({ expenses, periodName }: ExpensesOutputProps) {
   return (
