@@ -31,13 +31,17 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
     });
   }, [navigation, isEditing]);
 
-  function deleteExpenseHandler() {}
+  function deleteExpenseHandler() {
+    navigation.goBack();
+  }
 
   function cancelHandler() {
     navigation.goBack();
   }
 
-  function confirmHandler() {}
+  function confirmHandler() {
+    navigation.goBack();
+  }
 
   return (
     <View style={styles.container}>
