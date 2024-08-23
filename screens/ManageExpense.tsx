@@ -8,6 +8,7 @@ import { ExpensesContext } from "../store/expenses-context";
 
 import IconButton from "../components/UI/IconButton";
 import Button from "../components/UI/Button";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 
 type RootStackParamList = {
   ExpensesOverview: undefined;
@@ -65,6 +66,7 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
 
   return (
     <View style={styles.container}>
+      <ExpenseForm />
       <View style={styles.buttons}>
         <Button onPress={cancelHandler} mode="flat">
           Cancel
