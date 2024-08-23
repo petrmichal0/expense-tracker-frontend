@@ -46,7 +46,7 @@ type ExpensesContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const DUMMY_EXPENSES: ExpensesState = [
+export const DUMMY_EXPENSES = [
   {
     id: "e1",
     description: "Socks",
@@ -99,13 +99,13 @@ export const DUMMY_EXPENSES: ExpensesState = [
     id: "e9",
     description: "Book",
     amount: 35.99,
-    date: new Date("2024-04-18"),
+    date: new Date("2024-08-22"),
   },
   {
     id: "e10",
     description: "Book",
     amount: 35.99,
-    date: new Date("2024-04-18"),
+    date: new Date("2024-08-22"),
   },
 ];
 

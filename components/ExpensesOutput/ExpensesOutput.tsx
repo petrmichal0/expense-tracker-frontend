@@ -4,7 +4,6 @@ import { GlobalStyles } from "../../constants/styles";
 
 import ExpensesSummary from "./ExpensesSummary";
 import ExpensesList from "./ExpensesList";
-import { DUMMY_EXPENSES } from "../../store/expenses-context";
 
 type Expense = {
   amount: number;
@@ -21,8 +20,8 @@ type ExpensesOutputProps = {
 function ExpensesOutput({ expenses, periodName }: ExpensesOutputProps) {
   return (
     <View style={styles.container}>
-      <ExpensesSummary expenses={DUMMY_EXPENSES} periodName={periodName} />
-      <ExpensesList expenses={DUMMY_EXPENSES} />
+      <ExpensesSummary expenses={expenses} periodName={periodName} />
+      <ExpensesList expenses={expenses} />
     </View>
   );
 }
