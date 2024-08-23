@@ -1,8 +1,10 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { GlobalStyles } from "../constants/styles";
+
+import { ExpensesContext } from "../store/expenses-context";
 
 import IconButton from "../components/UI/IconButton";
 import Button from "../components/UI/Button";
@@ -22,6 +24,8 @@ type ManageExpenseProps = {
 };
 
 function ManageExpense({ route, navigation }: ManageExpenseProps) {
+  const expensesCtx = useContext(ExpensesContext);
+
   const editedExpenseId = route.params?.expenseId;
   const isEditing = !!editedExpenseId; // !! converts to boolean
 
@@ -32,7 +36,10 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
   }, [navigation, isEditing]);
 
   function deleteExpenseHandler() {
-    navigation.goBack();
+    if (editedExpenseId) {
+      expensesCtx.deleteExpense(editedExpenseId);
+      navigation.goBack();
+    }
   }
 
   function cancelHandler() {
@@ -40,6 +47,19 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
   }
 
   function confirmHandler() {
+    if (isEditing) {
+      expensesCtx.updateExpense(editedExpenseId, {
+        description: "Test",
+        amount: 100,
+        date: new Date(),
+      });
+    } else {
+      expensesCtx.addExpense({
+        description: "Test",
+        amount: 100,
+        date: new Date(),
+      });
+    }
     navigation.goBack();
   }
 
