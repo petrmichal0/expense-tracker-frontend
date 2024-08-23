@@ -17,16 +17,16 @@ type InputProps = {
 };
 
 function Input({ label, textInputConfig }: InputProps) {
-  const inputStyles = [styles.input];
+  let stylesDescription;
 
-  if (textInputConfig && textInputConfig.multiline) {
-    inputStyles.push(styles.inputMultiline);
+  if (textInputConfig?.multiline) {
+    stylesDescription = [styles.input, styles.inputMultiline];
   }
 
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput style={inputStyles} {...textInputConfig} />
+      <TextInput style={stylesDescription} {...textInputConfig} />
     </View>
   );
 }

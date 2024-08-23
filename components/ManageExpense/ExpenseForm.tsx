@@ -19,6 +19,7 @@ function ExpenseForm() {
           placeholder: "YYYY-MM-DD",
           maxLength: 10,
           onChangeText: () => {},
+          keyboardType: "decimal-pad",
         }}
       />
       <Input
