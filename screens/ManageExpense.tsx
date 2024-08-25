@@ -7,7 +7,6 @@ import { GlobalStyles } from "../constants/styles";
 import { ExpensesContext } from "../store/expenses-context";
 
 import IconButton from "../components/UI/IconButton";
-import Button from "../components/UI/Button";
 import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 
 type RootStackParamList = {
@@ -66,16 +65,12 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm />
-      <View style={styles.buttons}>
-        <Button onPress={cancelHandler} mode="flat">
-          Cancel
-        </Button>
+      <ExpenseForm
+        onCancel={cancelHandler}
+        onSubmit={confirmHandler}
+        submitButtonLabel={isEditing ? "Update" : "Add"}
+      />
 
-        <Button style={styles.button} onPress={confirmHandler}>
-          {isEditing ? "Update" : "Add"}
-        </Button>
-      </View>
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton
@@ -97,15 +92,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: GlobalStyles.colors.primary800,
-  },
-  buttons: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-  },
-  button: {
-    minWidth: 100,
   },
   deleteContainer: {
     marginTop: 16,
