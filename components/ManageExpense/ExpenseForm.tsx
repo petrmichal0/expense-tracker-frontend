@@ -95,10 +95,8 @@ function ExpenseForm({
         <Input
           style={styles.rowInput}
           label="Amount"
+          invalid={!inputs.amount.isValid}
           textInputConfig={{
-            backgroundColor: GlobalStyles.colors.primary100,
-            padding: 6,
-            borderRadius: 6,
             keyboardType: "decimal-pad",
             onChangeText: (enteredValue) =>
               inputChangedHandler("amount", enteredValue),
@@ -108,10 +106,8 @@ function ExpenseForm({
         <Input
           style={styles.rowInput}
           label="Date"
+          invalid={!inputs.date.isValid}
           textInputConfig={{
-            backgroundColor: GlobalStyles.colors.primary100,
-            padding: 6,
-            borderRadius: 6,
             placeholder: "YYYY-MM-DD",
             maxLength: 10,
             keyboardType: "decimal-pad",
@@ -124,6 +120,7 @@ function ExpenseForm({
       </View>
       <Input
         label="Description"
+        invalid={!inputs.description.isValid}
         textInputConfig={{
           multiline: true,
           onChangeText: (enteredValue) => {
@@ -133,7 +130,9 @@ function ExpenseForm({
         }}
       />
       {formIsInvalid && (
-        <Text>Invalid input values - please check yrou entered data!</Text>
+        <Text style={styles.errorText}>
+          Invalid input values - please check yrou entered data!
+        </Text>
       )}
       <View style={styles.buttons}>
         <Button onPress={onCancel} mode="flat">
@@ -166,6 +165,12 @@ const styles = StyleSheet.create({
   },
   rowInput: {
     flex: 1,
+  },
+  errorText: {
+    textAlign: "center",
+    color: GlobalStyles.colors.error500,
+    marginHorizontal: 24,
+    marginBottom: 24,
   },
   buttons: {
     flexDirection: "row",

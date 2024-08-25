@@ -13,24 +13,28 @@ type InputProps = {
   textInputConfig?: TextInputProps & {
     minHeight?: number;
     textAlignVertical?: "top" | "center" | "bottom";
-    backgroundColor?: string;
-    padding?: number;
-    borderRadius?: number;
   };
   style?: object;
+  invalid: boolean;
 };
 
-function Input({ label, textInputConfig, style }: InputProps) {
-  let stylesDescription;
+function Input({ label, textInputConfig, style, invalid }: InputProps) {
+  let inputStyles: any[] = [styles.input];
 
   if (textInputConfig?.multiline) {
-    stylesDescription = [styles.input, styles.inputMultiline];
+    inputStyles.push(styles.inputMultiline);
+  }
+
+  if (invalid) {
+    inputStyles.push(styles.invalidInput);
   }
 
   return (
     <View style={[styles.inputContainer, style]}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput style={stylesDescription} {...textInputConfig} />
+      <Text style={[styles.label, invalid && styles.invalidLabel]}>
+        {label}
+      </Text>
+      <TextInput style={inputStyles} {...textInputConfig} />
     </View>
   );
 }
@@ -60,5 +64,11 @@ const styles = StyleSheet.create({
   inputMultiline: {
     minHeight: 100,
     textAlignVertical: "top",
+  },
+  invalidLabel: {
+    color: GlobalStyles.colors.error500,
+  },
+  invalidInput: {
+    backgroundColor: GlobalStyles.colors.error50,
   },
 });
