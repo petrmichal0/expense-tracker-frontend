@@ -13,10 +13,14 @@ type InputProps = {
   textInputConfig?: TextInputProps & {
     minHeight?: number;
     textAlignVertical?: "top" | "center" | "bottom";
+    backgroundColor?: string;
+    padding?: number;
+    borderRadius?: number;
   };
+  style?: object;
 };
 
-function Input({ label, textInputConfig }: InputProps) {
+function Input({ label, textInputConfig, style }: InputProps) {
   let stylesDescription;
 
   if (textInputConfig?.multiline) {
@@ -24,7 +28,7 @@ function Input({ label, textInputConfig }: InputProps) {
   }
 
   return (
-    <View style={styles.inputContainer}>
+    <View style={[styles.inputContainer, style]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput style={stylesDescription} {...textInputConfig} />
     </View>
