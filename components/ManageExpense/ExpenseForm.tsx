@@ -28,23 +28,37 @@ function ExpenseForm({
   submitButtonLabel,
   defaultValues,
 }: ExpenseFormProps) {
-  const [inputValues, setInputValues] = useState({
-    amount: defaultValues ? defaultValues.amount.toString() : "",
-    date: defaultValues ? getFormattedDate({ date: defaultValues.date }) : "",
-    description: defaultValues ? defaultValues.description : "",
+  const [inputs, setInputs] = useState({
+    amount: {
+      value: defaultValues ? defaultValues.amount.toString() : "",
+      isValid: true,
+    },
+    date: {
+      value: defaultValues
+        ? getFormattedDate({ date: defaultValues.date })
+        : "",
+      isValid: true,
+    },
+    description: {
+      value: defaultValues ? defaultValues.description : "",
+      isValid: true,
+    },
   });
 
   function inputChangedHandler(inputIdentifier: string, enteredValue: string) {
-    setInputValues((inputValues) => {
-      return { ...inputValues, [inputIdentifier]: enteredValue };
+    setInputs((inputs) => {
+      return {
+        ...inputs,
+        [inputIdentifier]: { value: enteredValue, isValid: true },
+      };
     });
   }
 
   function submitHandler() {
     const expenseData = {
-      amount: +inputValues.amount,
-      date: new Date(inputValues.date),
-      description: inputValues.description,
+      amount: +inputs.amount.value,
+      date: new Date(inputs.date.value),
+      description: inputs.description.value,
     };
 
     const amountIsValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
@@ -52,12 +66,27 @@ function ExpenseForm({
     const descriptionIsValid = expenseData.description.trim().length > 0;
 
     if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
-      Alert.alert("Invalid input", "Please check your input values");
+      setInputs((inputs) => {
+        return {
+          amount: { value: inputs.amount.value, isValid: amountIsValid },
+          date: { value: inputs.date.value, isValid: dateIsValid },
+          description: {
+            value: inputs.description.value,
+            isValid: descriptionIsValid,
+          },
+        };
+      });
+
       return;
     }
 
     onSubmit(expenseData);
   }
+
+  const formIsInvalid =
+    !inputs.amount.isValid ||
+    !inputs.date.isValid ||
+    !inputs.description.isValid;
 
   return (
     <View style={styles.form}>
@@ -73,7 +102,7 @@ function ExpenseForm({
             keyboardType: "decimal-pad",
             onChangeText: (enteredValue) =>
               inputChangedHandler("amount", enteredValue),
-            value: inputValues.amount,
+            value: inputs.amount.value,
           }}
         />
         <Input
@@ -89,7 +118,7 @@ function ExpenseForm({
             onChangeText: (enteredValue) => {
               inputChangedHandler("date", enteredValue);
             },
-            value: inputValues.date,
+            value: inputs.date.value,
           }}
         />
       </View>
@@ -100,9 +129,12 @@ function ExpenseForm({
           onChangeText: (enteredValue) => {
             inputChangedHandler("description", enteredValue);
           },
-          value: inputValues.description,
+          value: inputs.description.value,
         }}
       />
+      {formIsInvalid && (
+        <Text>Invalid input values - please check yrou entered data!</Text>
+      )}
       <View style={styles.buttons}>
         <Button onPress={onCancel} mode="flat">
           Cancel
