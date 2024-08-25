@@ -9,8 +9,8 @@ import Button from "../../components/UI/Button";
 type ExpenseFormProps = {
   onCancel: () => void;
   onSubmit: (expenseData: {
-    amount: string;
-    date: string;
+    amount: number;
+    date: Date;
     description: string;
   }) => void;
   submitButtonLabel: string;
@@ -39,6 +39,7 @@ function ExpenseForm({
       date: new Date(inputValues.date),
       description: inputValues.description,
     };
+    onSubmit(expenseData);
   }
 
   return (

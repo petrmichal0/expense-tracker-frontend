@@ -23,6 +23,12 @@ type ManageExpenseProps = {
   navigation: StackNavigationProp<RootStackParamList, "ManageExpense">;
 };
 
+type ExpenseData = {
+  amount: number;
+  date: Date;
+  description: string;
+};
+
 function ManageExpense({ route, navigation }: ManageExpenseProps) {
   const expensesCtx = useContext(ExpensesContext);
 
@@ -46,23 +52,14 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
     navigation.goBack();
   }
 
-  function confirmHandler() {
+  function confirmHandler(expenseData: ExpenseData) {
     if (isEditing) {
-      expensesCtx.updateExpense(editedExpenseId, {
-        description: "Test",
-        amount: 100,
-        date: new Date(),
-      });
+      expensesCtx.updateExpense(editedExpenseId, expenseData);
     } else {
-      expensesCtx.addExpense({
-        description: "Test",
-        amount: 100,
-        date: new Date(),
-      });
+      expensesCtx.addExpense(expenseData);
     }
     navigation.goBack();
   }
-
   return (
     <View style={styles.container}>
       <ExpenseForm
@@ -84,7 +81,6 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
     </View>
   );
 }
-
 export default ManageExpense;
 
 const styles = StyleSheet.create({
