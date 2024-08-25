@@ -5,6 +5,7 @@ import { GlobalStyles } from "../../constants/styles";
 
 import Input from "./Input";
 import Button from "../../components/UI/Button";
+import { getFormattedDate } from "../../util/data";
 
 type ExpenseFormProps = {
   onCancel: () => void;
@@ -14,17 +15,23 @@ type ExpenseFormProps = {
     description: string;
   }) => void;
   submitButtonLabel: string;
+  defaultValues?: {
+    amount: number;
+    date: Date;
+    description: string;
+  };
 };
 
 function ExpenseForm({
   onCancel,
   onSubmit,
   submitButtonLabel,
+  defaultValues,
 }: ExpenseFormProps) {
   const [inputValues, setInputValues] = useState({
-    amount: "",
-    date: "",
-    description: "",
+    amount: defaultValues ? defaultValues.amount.toString() : "",
+    date: defaultValues ? getFormattedDate({ date: defaultValues.date }) : "",
+    description: defaultValues ? defaultValues.description : "",
   });
 
   function inputChangedHandler(inputIdentifier: string, enteredValue: string) {
@@ -72,6 +79,7 @@ function ExpenseForm({
             onChangeText: (enteredValue) => {
               inputChangedHandler("date", enteredValue);
             },
+            value: inputValues.date,
           }}
         />
       </View>
@@ -82,6 +90,7 @@ function ExpenseForm({
           onChangeText: (enteredValue) => {
             inputChangedHandler("description", enteredValue);
           },
+          value: inputValues.description,
         }}
       />
       <View style={styles.buttons}>
@@ -96,7 +105,6 @@ function ExpenseForm({
     </View>
   );
 }
-
 export default ExpenseForm;
 
 const styles = StyleSheet.create({
