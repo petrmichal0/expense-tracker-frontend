@@ -28,3 +28,18 @@ export async function getExpenses() {
 
   return expenses;
 }
+
+export function updateExpense(
+  id: string,
+  expenseData: {
+    amount: number;
+    date: Date;
+    description: string;
+  }
+) {
+  return axios.patch(BACKEND_URL + `expenses/${id}.json`, expenseData);
+}
+
+export async function deleteExpense(id: string) {
+  return axios.delete(BACKEND_URL + `expenses/${id}.json`);
+}
