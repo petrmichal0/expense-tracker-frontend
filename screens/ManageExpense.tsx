@@ -28,6 +28,7 @@ type ExpenseData = {
   amount: number;
   date: Date;
   description: string;
+  id?: string;
 };
 
 function ManageExpense({ route, navigation }: ManageExpenseProps) {
@@ -57,12 +58,15 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
     navigation.goBack();
   }
 
-  function confirmHandler(expenseData: ExpenseData) {
+  async function confirmHandler(expenseData: ExpenseData) {
     if (isEditing) {
       expensesCtx.updateExpense(editedExpenseId, expenseData);
     } else {
-      storeExpense(expenseData);
-      expensesCtx.addExpense(expenseData);
+      const id = await storeExpense(expenseData);
+      expensesCtx.addExpense({
+        ...expenseData,
+        id: id,
+      });
     }
     navigation.goBack();
   }

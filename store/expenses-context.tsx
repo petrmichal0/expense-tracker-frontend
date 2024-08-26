@@ -11,7 +11,7 @@ type ExpensesState = Expense[];
 
 type AddExpenseAction = {
   type: "ADD";
-  payload: Omit<Expense, "id">; // při přidání výdaje, id se generuje
+  payload: Expense; // při přidání výdaje, id se generuje
 };
 
 type SetExpensesAction = {
@@ -67,11 +67,11 @@ function expensesReducer(
 ): ExpensesState {
   switch (action.type) {
     case "SET":
-      return action.payload;
+      const inverted = action.payload.reverse(); // reverse() pro zachování pořadí
+      return inverted;
 
     case "ADD":
-      const id = new Date().toString() + Math.random().toString();
-      return [...state, { ...action.payload, id: id }];
+      return [action.payload, ...state];
 
     case "UPDATE":
       return state.map((expense) =>
