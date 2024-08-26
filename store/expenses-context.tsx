@@ -14,6 +14,11 @@ type AddExpenseAction = {
   payload: Omit<Expense, "id">; // při přidání výdaje, id se generuje
 };
 
+type SetExpensesAction = {
+  type: "SET";
+  payload: ExpensesState;
+};
+
 type UpdateExpenseAction = {
   type: "UPDATE";
   payload: {
@@ -28,6 +33,7 @@ type DeleteExpenseAction = {
 };
 
 type ExpensesAction =
+  | SetExpensesAction
   | AddExpenseAction
   | UpdateExpenseAction
   | DeleteExpenseAction;
@@ -35,6 +41,7 @@ type ExpensesAction =
 type ExpensesContextType = {
   expenses: ExpensesState;
   addExpense: (expenseData: Omit<Expense, "id">) => void;
+  setExpenses: (expenses: Expense[]) => void;
   deleteExpense: (id: string) => void;
   updateExpense: (
     id: string,
@@ -46,72 +53,10 @@ type ExpensesContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const DUMMY_EXPENSES = [
-  {
-    id: "e1",
-    description: "Socks",
-    amount: 99.99,
-    date: new Date("2024-07-15"),
-  },
-  {
-    id: "e2",
-    description: "Shoes",
-    amount: 125.99,
-    date: new Date("2024-07-16"),
-  },
-  {
-    id: "e3",
-    description: "Oranges",
-    amount: 35.99,
-    date: new Date("2024-05-15"),
-  },
-  {
-    id: "e4",
-    description: "Book",
-    amount: 65.99,
-    date: new Date("2024-04-15"),
-  },
-  {
-    id: "e5",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e6",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e7",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e8",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-04-18"),
-  },
-  {
-    id: "e9",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-08-22"),
-  },
-  {
-    id: "e10",
-    description: "Book",
-    amount: 35.99,
-    date: new Date("2024-08-22"),
-  },
-];
-
 export const ExpensesContext = createContext<ExpensesContextType>({
   expenses: [],
   addExpense: () => {},
+  setExpenses: () => {},
   deleteExpense: () => {},
   updateExpense: () => {},
 });
@@ -121,6 +66,9 @@ function expensesReducer(
   action: ExpensesAction
 ): ExpensesState {
   switch (action.type) {
+    case "SET":
+      return action.payload;
+
     case "ADD":
       const id = new Date().toString() + Math.random().toString();
       return [...state, { ...action.payload, id: id }];
@@ -141,10 +89,14 @@ function expensesReducer(
 }
 
 function ExpensesContextProvider({ children }: ExpensesContextProviderProps) {
-  const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXPENSES);
+  const [expensesState, dispatch] = useReducer(expensesReducer, []);
 
   function addExpense(expenseData: Omit<Expense, "id">) {
     dispatch({ type: "ADD", payload: expenseData });
+  }
+
+  function setExpenses(expenses: Expense[]) {
+    dispatch({ type: "SET", payload: expenses });
   }
 
   function deleteExpense(id: string) {
@@ -161,6 +113,7 @@ function ExpensesContextProvider({ children }: ExpensesContextProviderProps) {
   const value: ExpensesContextType = {
     expenses: expensesState,
     addExpense,
+    setExpenses,
     deleteExpense,
     updateExpense,
   };
