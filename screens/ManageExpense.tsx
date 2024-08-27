@@ -30,7 +30,6 @@ type ExpenseData = {
   amount: number;
   date: Date;
   description: string;
-  id?: string;
 };
 
 function ManageExpense({ route, navigation }: ManageExpenseProps) {

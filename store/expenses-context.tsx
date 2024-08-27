@@ -40,7 +40,7 @@ type ExpensesAction =
 
 type ExpensesContextType = {
   expenses: ExpensesState;
-  addExpense: (expenseData: Omit<Expense, "id">) => void;
+  addExpense: (expenseData: Expense) => void;
   setExpenses: (expenses: Expense[]) => void;
   deleteExpense: (id: string) => void;
   updateExpense: (
@@ -48,7 +48,6 @@ type ExpensesContextType = {
     expenseData: Partial<Omit<Expense, "id">>
   ) => void;
 };
-
 type ExpensesContextProviderProps = {
   children: React.ReactNode;
 };
@@ -91,7 +90,7 @@ function expensesReducer(
 function ExpensesContextProvider({ children }: ExpensesContextProviderProps) {
   const [expensesState, dispatch] = useReducer(expensesReducer, []);
 
-  function addExpense(expenseData: Omit<Expense, "id">) {
+  function addExpense(expenseData: Expense) {
     dispatch({ type: "ADD", payload: expenseData });
   }
 
