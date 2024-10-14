@@ -4,10 +4,7 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "target": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
