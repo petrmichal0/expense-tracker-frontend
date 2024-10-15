@@ -80,7 +80,7 @@ The backend for this project is hosted at the following URL:
 
 The source code for the backend is available on GitHub:
 
-- **Backend Repository:** [https://github.com/petrmichal0/my-favorite-places-backend](https://github.com/petrmichal0/my-favorite-places-backend)
+- **Backend Repository:** [https://github.com/petrmichal0/expense-tracker-backend](https://github.com/petrmichal0/expense-tracker-backend)
 
 All API endpoints and detailed documentation on how to interact with the backend are provided in the backend repository. If you want to see the available API requests and how to use them, please visit the backend repository's README or relevant documentation files.
 
@@ -88,30 +88,30 @@ All API endpoints and detailed documentation on how to interact with the backend
 
 <table>
   <tr>
-    <th>All Places Screen</th>
-    <th>Place Details</th>
-    <th>Add Place</th>
-    <th>Pick a Location</th>
+    <th>Recent Expenses</th>
+    <th>All Expenses</th>
+    <th>Add Expenses</th>
+    <th>Edit Expenses</th>
   </tr>
   <tr>
     <td style="border: 1px solid black;">
-  <a href="https://github.com/user-attachments/assets/434527d2-f0d9-47c0-a288-7298bb50a67d" target="_blank">
-    <img src="https://github.com/user-attachments/assets/434527d2-f0d9-47c0-a288-7298bb50a67d" width="130" height="300" alt="All Places Screen">
+  <a href="https://github.com/user-attachments/assets/4a25c2f9-fd00-4a2d-ac3a-12060af635e3" target="_blank">
+    <img src="https://github.com/user-attachments/assets/4a25c2f9-fd00-4a2d-ac3a-12060af635e3" width="130" height="300" alt="All Places Screen">
   </a>
 </td>
 <td style="border: 1px solid black;">
-  <a href="https://github.com/user-attachments/assets/3199ab21-d16e-465a-9ec7-eac7d1dc57ad" target="_blank">
-    <img src="https://github.com/user-attachments/assets/3199ab21-d16e-465a-9ec7-eac7d1dc57ad" width="130" height="300" alt="Place Details">
+  <a href="https://github.com/user-attachments/assets/223b201f-ffd1-4b1a-b1e4-0e8ce0a9d757" target="_blank">
+    <img src="https://github.com/user-attachments/assets/223b201f-ffd1-4b1a-b1e4-0e8ce0a9d757" width="130" height="300" alt="Place Details">
   </a>
 </td>
 <td style="border: 1px solid black;">
-  <a href="https://github.com/user-attachments/assets/88f0720b-cdf1-4983-92dc-4946c3b4d969" target="_blank">
-    <img src="https://github.com/user-attachments/assets/88f0720b-cdf1-4983-92dc-4946c3b4d969" width="130" height="300" alt="Add Place">
+  <a href="https://github.com/user-attachments/assets/59373e37-ff6c-4a96-a00a-e5b9a6324f15" target="_blank">
+    <img src="https://github.com/user-attachments/assets/59373e37-ff6c-4a96-a00a-e5b9a6324f15" width="130" height="300" alt="Add Place">
   </a>
 </td>
 <td style="border: 1px solid black;">
-  <a href="https://github.com/user-attachments/assets/25df58d8-428c-4aad-8bf5-a868e84ae620" target="_blank">
-    <img src="https://github.com/user-attachments/assets/25df58d8-428c-4aad-8bf5-a868e84ae620" width="130" height="300" alt="Pick a Location">
+  <a href="https://github.com/user-attachments/assets/e6e9ae57-1c5d-4ff5-851d-f01e249628bb" target="_blank">
+    <img src="https://github.com/user-attachments/assets/e6e9ae57-1c5d-4ff5-851d-f01e249628bb" width="130" height="300" alt="Pick a Location">
   </a>
 </td>
   </tr>
