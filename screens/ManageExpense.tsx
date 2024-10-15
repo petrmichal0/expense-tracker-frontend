@@ -6,7 +6,7 @@ import { GlobalStyles } from "../constants/styles";
 
 import { ExpensesContext } from "../store/expenses-context";
 
-import { storeExpense, updateExpense, deleteExpense } from "../util/http";
+import { createExpense, updateExpense, deleteExpense } from "../util/api";
 import IconButton from "../components/UI/IconButton";
 import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
@@ -78,7 +78,7 @@ function ManageExpense({ route, navigation }: ManageExpenseProps) {
         expensesCtx.updateExpense(editedExpenseId, expenseData);
         await updateExpense(editedExpenseId, expenseData);
       } else {
-        const id = await storeExpense(expenseData);
+        const id = await createExpense(expenseData);
         expensesCtx.addExpense({
           ...expenseData,
           id: id,

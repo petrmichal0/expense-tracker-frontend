@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { ExpensesContext } from "../store/expenses-context";
 import { getDateMinusDays } from "../util/data";
-import { getExpenses } from "../util/http";
+import { getAllExpenses } from "../util/api";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 import ErrorOverlay from "../components/UI/ErrorOverlay";
 
@@ -16,7 +16,7 @@ function RecentExpenses() {
     async function fetchExpenses() {
       setIsFetching(true);
       try {
-        const expenses = await getExpenses();
+        const expenses = await getAllExpenses();
         expensesCtx.setExpenses(expenses);
       } catch (err) {
         setError("Could not fetch expenses!");
