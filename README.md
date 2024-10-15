@@ -7,7 +7,7 @@ Expense Tracker Frontend is a React Native app to help users track their spendin
 ![Static Badge](https://img.shields.io/badge/status-online-brightgreen)
 
 ## Quick Look
-<img src="https://github.com/user-attachments/assets/3aacf781-597f-443c-999e-884cc86da003" width="250" alt="Expense Tracker App Demo">
+<img src="https://github.com/user-attachments/assets/b494ee2f-8986-45cc-a705-bafe6ce72082" width="250" alt="Expense Tracker App Demo">
 
 ## Table of Content
 - [Project Title and Description](#project-title-and-description)
