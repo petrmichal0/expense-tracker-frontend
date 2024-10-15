@@ -182,6 +182,7 @@ Expense Tracker Frontend/
 
 - **Axios**: For communication with the backend.
 - **React Navigation**: For navigation between screens.
+- **@react-navigation/bottom-tabs**: For tab-based navigation at the bottom of the app.
 
 ## License
 
