@@ -74,7 +74,7 @@ To run the app on a simulator or real device:
 
 The backend for this project is hosted at the following URL:
 
-- **Backend API:** [https://expense-tracker-v1-backend-e443d7377cc0.herokuapp.com/](https://expense-tracker-v1-backend-e443d7377cc0.herokuapp.com/)
+- **Backend API:** https://expense-tracker-v1-backend-e443d7377cc0.herokuapp.com/
 
 The source code for the backend is available on GitHub:
 
